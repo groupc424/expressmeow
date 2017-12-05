@@ -13,4 +13,5 @@ There should be a voting mechanism to enable people to vote for cutest pets.
 
 ***
 All code within this has been written by *Melissa-Grace Soriano*
+
 Any resources I have used will be credited. 
