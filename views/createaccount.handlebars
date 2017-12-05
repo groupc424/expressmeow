@@ -1,0 +1,37 @@
+<div class="item">
+<center>
+
+	<p><a href="/home">Return to Homepage</a></p>
+
+	<h1>Create Account</h1>
+	{{#if errors}}
+      {{#each errors}}
+        <div class="alert">
+        <span class="whoops" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <strong>Whoops!</strong> {{msg}}
+        </div>
+      {{/each}}
+      {{/if}}
+	<form action='/users/createaccount' method='post'>
+
+		<p><label>Full Name</label><br />
+		<input type="text" class="form-control" placeholder="Fullname" name="fullname"></p>
+
+		<p><label>Username</label><br />
+		<input type="text" class="form-control" placeholder="Username" name="username"></p>
+
+		<p><label>Email</label><br />
+		<input type="email" class="form-control" placeholder="Useremail" name="useremail"></p>
+
+		<p><label>Password</label><br />
+		<input type="password" class="form-control" placeholder="Password" name="password"></p>
+
+		<p><label>Confirm Password</label><br />
+		<input type="password" class="form-control" placeholder="Password" name="password2"></p>
+		
+		<p><input type='submit' name='submit' value='Add User'></p>
+
+	</form>
+</center>
+
+</div>
