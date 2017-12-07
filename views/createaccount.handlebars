@@ -6,8 +6,8 @@
 	<h1>Create Account</h1>
 	{{#if errors}}
       {{#each errors}}
-        <div class="alert">
-        <span class="whoops" onclick="this.parentElement.style.display='none';">&times;</span> 
+        <div class="whoops">
+        <span class="alert" onclick="this.parentElement.style.display='none';">&times;</span> 
         <strong>Whoops!</strong> {{msg}}
         </div>
       {{/each}}
