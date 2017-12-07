@@ -15,9 +15,18 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/meowdb');
 var db = mongoose.connection;
 
+// Check connection
+db.once('open', function(){
+  console.log('Connected to MongoDB');
+});
+
+// Check for DB errors
+db.on('error', function(err){
+  console.log(err);
+});
+
 var routes = require('./routes/index');
 var users = require('./routes/users');
-var dash = require('./routes/dashboard');
 
 // Init
 var app = express();
@@ -48,6 +57,11 @@ app.use(session({
 // Passport init
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.get('*', function(req, res, next){
+  res.locals.user = req.user || null;
+  next();
+});
 
 // Express Validator - taken from Middleware Options
 app.use(expressValidator({
@@ -81,10 +95,9 @@ app.use(function (req, res, next) {
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/dashboard', dash);
 
 app.get('/voting', function(req, res){
-	res.render('index');
+	res.render('voting');
 });
 
 app.get('/home', function(req, res){
