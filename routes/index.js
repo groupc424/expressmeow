@@ -20,7 +20,18 @@ router.post('/voting', function(req, res){
 
 // Bring logged in user to dash
 router.get('/dashboard', ensureAuthenticated, function(req, res){
-	res.render('dashboard');
+	res.render('dashboard', 
+		{ username: req.user.username,
+			fullname: req.user.fullname,
+			useremail: req.user.useremail });
+});
+
+// update information page
+router.get('/updateinfo', ensureAuthenticated, function(req, res){
+	res.render('updateinfo', 
+		{ username: req.user.username,
+			fullname: req.user.fullname,
+			useremail: req.user.useremail });
 });
 
 function ensureAuthenticated(req, res, next){
