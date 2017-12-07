@@ -1,14 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-var User = require('../models/user');
+let User = require('../models/user');
 
-// Voting
-router.get('/voting', function(req, res){
+// Bring to voting(index) page
+router.get('/', function(req, res){
 	res.render('voting');
 });
 
-//generate pet
+//generate random pet
 
 
 // Submitvote
@@ -17,6 +17,20 @@ router.post('/voting', function(req, res){
 
 	// randomize images 
 });
+
+// Bring logged in user to dash
+router.get('/dashboard', ensureAuthenticated, function(req, res){
+	res.render('dashboard');
+});
+
+function ensureAuthenticated(req, res, next){
+	if(req.isAuthenticated()){
+		return next();
+	} else {
+		req.flash('error_msg','You are not logged in');
+		res.redirect('/users/login');
+	} 
+}
 
 
 module.exports = router;
