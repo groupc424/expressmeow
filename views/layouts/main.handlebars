@@ -265,7 +265,7 @@ a {
 			{{#if success_msg}}
 			<div class="hooray">
 				<span class="alert" onclick="this.parentElement.style.display='none';">&times;</span> 
-				<strong>Whoops!</strong> {{success_msg}}</div>
+				<strong>Hooray!</strong> {{success_msg}}</div>
 				{{/if}}
 
 			{{#if error_msg}}
@@ -288,8 +288,13 @@ a {
 
 			<h1>Users</h1>
 			<ul> 
+				{{#if user}}
+				<li><a href="/dashboard">Dashboard</a></li>
+				<li><a href="/users/logout">Logout</a></li>
+				{{else}}
 				<li><a href='/login'>Member Sign-in</a></li>
 				<li><a href='/createaccount'>New User</a></li>
+				{{/if}}
 			</ul>
 
 			<h1>Actions</h1>
