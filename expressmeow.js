@@ -124,5 +124,5 @@ app.get('/emailus', function(req, res){
 app.set('port', process.env.PORT || 3000);
 
 app.listen(app.get('port'), function(){
-	console.log("Express started on http://localhost:" + app.get('port') + "Press Ctrl-C to terminate");
+	console.log("How many cookies can I eat? " + app.get('port') + "Press Ctrl-C to terminate");
 });
