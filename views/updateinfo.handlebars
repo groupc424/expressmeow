@@ -1,41 +1,45 @@
 <div class="item">
 <h1>Your Stuff:</h1>
-	<p> Username: {{username}} </p>
 
-	<p> Current Full Name: {{fullname}} <br />
-		New Full Name: <input type="text" class="form-control" placeholder="Full Name" name="fullname">
+	<form action="/updateinfo" method="POST" enctype="multipart/form-data">
+
+	<p> <strong>Username:</strong> {{username}} </p>
+
+	<p> <strong>Current Full Name:</strong> {{fullname}} <br />
+		New Full Name: <input type="text" class="form-control" placeholder="Full Name" name="newfullname" value="{{fullname}}">
 		</p>
 
-	<p> Current Email: {{useremail}} <br />
-		New Email: <input type="text" class="form-control" placeholder="Email" name="useremail">
+	<p> <strong>Current Email:</strong> {{useremail}} <br />
+		New Email: <input type="text" class="form-control" placeholder="Email" name="newuseremail" value="{{useremail}}">
 		</p>
 
-	<p> Current Location: <br />
-		New Location: <input type="text" class="form-control" placeholder="Location" name="location">
+	<p> <strong>Current Location:</strong> {{location}} <br />
+		New Location:</strong> <input type="text" class="form-control" placeholder='Location' name="newlocation" value="{{location}}">
 		</p>
 
-	<p> Current Pet Name: <br />
-		New Pet Name: <input type="text" class="form-control" placeholder="Pet Name" name="petname">
+	<p> <strong>Current Pet Name:</strong> {{petname}} <br />
+		New Pet Name: <input type="text" class="form-control" placeholder="Pet Name" name="newpetname" value="{{petname}}">
 		</p>
 
-	<p> Current Pet Type: <br />
+	<p> <strong>Current Pet Type:</strong> {{pettype}} <br />
 		New Pet Type: 
-		<select name="pettype">
-		<option value="volvo">Dog</option>
-		<option value="saab">Cat</option>
-		<option value="fiat">Reptile</option>
-		<option value="audi">Rodents</option></select> </p>
+		<select name="newpettype">
+		<option value="dog">dog</option>
+		<option value="cat">cat</option>
+		<option value="reptile">reptile</option>
+		<option value="rodent">rodent</option>
+		<option value="{{pettype}}" selected>{{pettype}}</option></select> </p> 
 
-	<p> Current Pet Description: <br />
+	<p> <strong>Current Pet Description:</strong> {{petdesc}} <br />
 		New Pet Description: <br />
-		<textarea name= 'petdesc' value ='' rows= '8' cols= '50'></textarea>
+		<textarea name= 'newpetdesc' rows= '8' cols= '50' value=''>{{petdesc}}</textarea>
 		</p>
 
-	<p> Pet Picture: </p>
+	<p> <strong>Current Pet Picture:</strong> {{picture}} <br />
+	<input type="file" name="picture" accept="application/x-zip-compressed,image/*"></p>
 
-	<br />
+	<input type='submit' name='submit' value='Update Information'></form>
+	<form method="get" action="/dashboard"><input type='submit' name='cancel' value='Cancel'></form> 
 
-	<p><input type='submit' name='submit' value='Update Information'>
-	<input type='submit' name='cancel' value='Cancel'></p>
 </div>
 
