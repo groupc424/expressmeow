@@ -23,6 +23,11 @@ router.post('/createaccount', function(req, res){
 	var password = req.body.password;
 	var password2 = req.body.password2; 
 	var votes = 0;
+	var location = null;
+	var petname = null;
+	var pettype = null;
+	var petdesc = null;;
+	var picture = null;
 
 	// Validation
 	req.checkBody('fullname', 'Name is required').notEmpty();
@@ -41,10 +46,15 @@ router.post('/createaccount', function(req, res){
 	} else {
 		var newUser = new User({
 			fullname: fullname,
-			useremail:useremail,
+			useremail: useremail,
 			username: username,
 			password: password,
 			votes: votes,
+			location: location,
+			petname: petname,
+			pettype: pettype,
+			petdesc: petdesc,
+			picture: picture
 		});
 
 		User.createUser(newUser, function(err, user){
@@ -52,8 +62,8 @@ router.post('/createaccount', function(req, res){
 			console.log(user);
 		});
 
-		res.redirect('/users/login');
 		req.flash('success_msg', 'You\'ve successfully created an account and can now login');
+		res.redirect('/users/login');
 	}
 });
 
@@ -70,7 +80,7 @@ passport.use(new LocalStrategy(
    		if(isMatch){
    			return done(null, user);
    		} else {
-   			return done(null, false, {message: 'Invalid password'});
+   			return done(null, false, {message: 'Wrong Password'});
    		}
    	});
    });
@@ -86,16 +96,19 @@ passport.deserializeUser(function(id, done) {
   });
 });
 
-router.post('/login',
-  passport.authenticate('local', {successRedirect:'/dashboard', failureRedirect:'/users/login',failureFlash: true}),
-  function(req, res) {
-    res.redirect('/');
-  });
+router.post('/login', function(req, res, next){
+  passport.authenticate('local', {
+  	successRedirect:'/dashboard', 
+  	failureRedirect:'/users/login',
+  	failureFlash: true
+  })(req, res, next);
+});
+
 
 router.get('/logout', function(req, res){
 	req.logout();
 
-	req.flash('success_msg', 'You are logged out');
+	req.flash('success_msg', 'You\'ve successfully logged out');
 
 	res.redirect('/users/login');
 });
