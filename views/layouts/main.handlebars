@@ -56,6 +56,10 @@ h1,h2,h3 {
 	color: #e8825a;
 	padding-top: 6px;
 }
+strong { 
+    font-weight: bold;
+    color: #009999;
+}
 /* misc */
 .clearer {
 	clear: both;
@@ -111,7 +115,7 @@ h1,h2,h3 {
 	background: #ffe0dd;
 	border: 1px solid #E5E5E5;
 	float: left;
-	width: 200px;
+	width: 155px;
 }
 .sidenav h1 {
 	color: #666;
@@ -144,7 +148,7 @@ h1,h2,h3 {
 /* content */
 .content {
 	float: right;
-	width: 520px;
+	width: 565px;
 }
 .content .item {
 	padding: 6px 12px;
@@ -265,19 +269,19 @@ a {
 			{{#if success_msg}}
 			<div class="hooray">
 				<span class="alert" onclick="this.parentElement.style.display='none';">&times;</span> 
-				<strong>Hooray!</strong> {{success_msg}}</div>
+				<span style="font-weight:bold">Hooray!</span> {{success_msg}}</div>
 				{{/if}}
 
 			{{#if error_msg}}
 			<div class="whoops">
 				<span class="alert" onclick="this.parentElement.style.display='none';">&times;</span> 
-				<strong>Whoops!</strong> {{error_msg}}</div>
+				<span style="font-weight:bold">Whoops!</span> {{error_msg}}</div>
 				{{/if}}
 
 			{{#if error}}
 			<div class="whoops">
 				<span class="alert" onclick="this.parentElement.style.display='none';">&times;</span> 
-				<strong>Whoops!</strong> {{error}}</div>
+				<span style="font-weight:bold">Whoops!</span> {{error}}</div>
             {{/if}}
 
 
