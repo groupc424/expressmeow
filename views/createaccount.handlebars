@@ -8,10 +8,11 @@
       {{#each errors}}
         <div class="whoops">
         <span class="alert" onclick="this.parentElement.style.display='none';">&times;</span> 
-        <strong>Whoops!</strong> {{msg}}
+        <span style="font-weight:bold">Whoops!</span> {{msg}}
         </div>
       {{/each}}
       {{/if}}
+
 	<form action='/users/createaccount' method='post'>
 
 		<p><label>Full Name</label><br />
